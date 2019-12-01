@@ -25,7 +25,7 @@ namespace EmployeeHub.Core.Factory
         public HubEmployee CreateEmployee(BasicEmployee employeeData)
         {
             // Select the factory according to the Contract Type
-            if (_factories.ContainsKey(employeeData.ContractTypeName))
+            if (!_factories.ContainsKey(employeeData.ContractTypeName))
             {
                 return null;
             }

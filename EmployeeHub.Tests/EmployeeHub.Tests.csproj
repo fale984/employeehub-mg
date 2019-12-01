@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeHub.Core\EmployeeHub.Core.csproj" />
     <ProjectReference Include="..\EmployeeHub.DataAccess\EmployeeHub.DataAccess.csproj" />
   </ItemGroup>
 
