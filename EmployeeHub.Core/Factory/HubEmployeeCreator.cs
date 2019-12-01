@@ -1,4 +1,5 @@
-﻿using EmployeeHub.Core.Models;
+﻿using EmployeeHub.Core.Contracts;
+using EmployeeHub.Core.Models;
 using EmployeeHub.DataAccess.Models;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace EmployeeHub.Core.Factory
     /// Employee Creator
     /// Keeps the factories in a dictionary and selects the corresponding to the contract
     /// </summary>
-    public class HubEmployeeCreator
+    public class HubEmployeeCreator : IHubEmployeeCreator
     {
         private readonly Dictionary<string, EmployeeFactory> _factories;
 
