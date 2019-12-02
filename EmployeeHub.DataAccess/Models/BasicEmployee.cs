@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EmployeeHub.DataAccess.Models
+﻿namespace EmployeeHub.DataAccess.Models
 {
     /// <summary>
     /// Class to map the Employee API entities

@@ -1,3 +1,8 @@
+using EmployeeHub.Core.Contracts;
+using EmployeeHub.Core.Factory;
+using EmployeeHub.Core.Services;
+using EmployeeHub.DataAccess.Contracts;
+using EmployeeHub.DataAccess.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,6 +25,15 @@ namespace EmployeeHub.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -27,6 +41,11 @@ namespace EmployeeHub.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<IEmployeeReader, ApiEmployeeReader>(x =>
+                new ApiEmployeeReader(Configuration["AppSettings:EmployeeEndpoint"]));
+            services.AddTransient<IHubEmployeeCreator, HubEmployeeCreator>();
+            services.AddTransient<IHubEmployeeRepository, HubEmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
