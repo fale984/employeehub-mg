@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSearch(f)"
+          #f="ngForm"
+          class="form-inline">
+      <div class="form-group">
+        <label for="employeeId">Search user by Id</label>
+        &nbsp;
+        <input id="employeeId"
+               name="employeeId"
+               type="text"
+               class="form-control"
+               ngModel
+               [pattern]="'^[1-9]+[0-9]*$'" />
+        &nbsp;
+        <button type="submit"
+                class="btn btn-success"
+                [disabled]="this.loading || f.invalid">
+          Find
+        </button>
+        &nbsp;
+        <label *ngIf="f.invalid"
+               class="text-danger">The Id must be positive integer</label>
+        <label *ngIf="this.loading"
+               class="text-info">Loading...</label>
+        <br>
+      </div>
+      <div>Enter a User Id or leave empty to load all employees</div>
+    </form>
+  </div>
+</div>
+<hr />
+<app-employee-list [employees]="employees"></app-employee-list>

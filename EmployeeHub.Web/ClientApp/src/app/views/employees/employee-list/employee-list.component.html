@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Hourly Salary</th>
+          <th>Monthly Salary</th>
+          <th>Annual Salary</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{employee.id}}</td>
+          <td>{{employee.name}}</td>
+          <td>{{employee.hourlySalary}}</td>
+          <td>{{employee.monthlySalary}}</td>
+          <td>{{employee.annualSalary}}</td>
+          <td>{{employee.role.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
